@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 
 const COUNTER_FILE = "counter.txt";
 
-let counter = 1023;
+let counter = 1043;
 let interval = 60000 * 4; // Start with 1 minute interval
 let intervalId = 0;
 
@@ -32,6 +32,8 @@ async function makePostRequest() {
     counter++;
     await saveCounter();
 
+    let randomPuan = Math.floor(Math.random() * 3) + 2;
+
     try {
         const response = await fetch("https://zqwqz.org/oyver", {
             headers: {
@@ -54,7 +56,7 @@ async function makePostRequest() {
                 Referer: "https://zqwqz.org/",
                 "Referrer-Policy": "strict-origin-when-cross-origin",
             },
-            body: `pid=${counter}&puan=4&type=puanver&t=diziler`,
+            body: `pid=${counter}&puan=${randomPuan}&type=puanver&t=diziler`,
             method: "POST",
         });
 
@@ -62,7 +64,7 @@ async function makePostRequest() {
             `POST request sent. Counter: ${counter}, Status: ${response.status}`
         );
 
-        console.log("pid:", counter);
+        console.log("pid:", counter, "puan:", randomPuan);
         // Read the response body
         const responseText = await response.text();
         console.log("Response:", responseText);
