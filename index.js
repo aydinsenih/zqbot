@@ -32,7 +32,7 @@ async function makePostRequest() {
     counter++;
     await saveCounter();
 
-    let randomPuan = Math.floor(Math.random() * 3) + 2;
+    let randomPuan = Math.floor(Math.random() * 3) + 3;
 
     try {
         const response = await fetch("https://zqwqz.org/oyver", {
